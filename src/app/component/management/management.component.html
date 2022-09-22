@@ -1,0 +1,61 @@
+<div class="p-2">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+        <a class="navbar-brand px-3"> APOLLO HOSPITAL </a>
+
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="/admin" routerLinkActive="active">Patient </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/adminDoctor">Doctor</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <ul class="navbar-nav d-flex px-4">
+                <li class="nav-item rm">
+                    <a class="nav-link" routerLink="/login" routerLinkActive="active">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="container" *ngIf="display">
+    <app-add-patient *ngIf="!editor"></app-add-patient>
+    <app-edit-patient *ngIf="editor" [editPatient]="editPatient"></app-edit-patient>
+</div>
+
+<div class="p-4 ">
+    <div class="d-flex justify-content-end"><img (click)="create()" style="margin-right: 50px;"
+            src="\assets\add-icon.png">
+    </div>
+    <table class=" table table-striped table-hover table-active ">
+        <thead class="thead">
+            <tr>
+                <th class="col">patient Id</th>
+                <th class="col">Patient Name</th>
+                <th class="col">Admission Date</th>
+                <th class="col">Phone No</th>
+                <th class="col">Doctor Id</th>
+                <th class="col">Doctor Name</th>
+                <th class="col " width="100px"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let patient of patientList" class="col">
+                <td>{{patient.id}}</td>
+                <td><a (click)="view(patient)"> {{patient.name}}</a></td>
+                <td>{{patient.admissionDate}}</td>
+                <td>{{patient.phoneNo}}</td>
+                <td>{{patient.doctor.id}}</td>
+                <td>{{patient.doctor.name}}</td>
+                <td><img src="\assets\edit-icon.png" (click)="edit(patient)" />
+                    <img src="\assets\delete-icon.png" (click)="delete(patient)" />
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

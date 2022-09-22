@@ -1,0 +1,59 @@
+<div class="container ">
+    <div class="row pt-5">
+        <div class="mx-auto">
+            <div class="card rounded-10">
+                <div class="card-header">
+                    <h3 class="d-flex justify-content-center">{{doctor.name}}</h3>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered ">
+                        <tbody>
+                            <tr>
+                                <th class="col-sm">Doctor ID:</th>
+                                <td>{{doctor.id|number}}</td>
+                            </tr>
+                            <tr>
+                                <th>Doctor Name:</th>
+                                <td>{{doctor.name}}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Spesizlization:</th>
+                                <td>{{doctor.specialization}}</td>
+                            </tr>
+                            <tr>
+                                <th>Address:</th>
+                                <td>{{doctor.address}}</td>
+                            </tr>
+                            <tr>
+                                <th>Phone No:</th>
+                                <td>{{doctor.phoneNo|number}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <p class="h3" align="center">PATIENTS</p>
+                    <table class=" table ">
+                        <thead class="thead">
+                            <tr>
+                                <th class="col">patient Id</th>
+                                <th class="col">Patient Name</th>
+                                <th class="col">Admission Date</th>
+                                <th class="col">Phone No</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let patient of doctor.patients" align="center">
+                                <td>{{patient.id|number}}</td>
+                                <td><a (click)="addcheckup(patient)"> {{patient.name}}</a></td>
+                                <td>{{patient.admissionDate}}</td>
+                                <td>{{patient.phoneNo|number}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

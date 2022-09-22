@@ -1,0 +1,67 @@
+<div class="container ">
+    <div class="row pt-5">
+        <div class="mx-auto">
+            <div class="card rounded-10">
+                <div class="card-header">
+                    <h3 class="d-flex justify-content-center">{{patient.name}}</h3>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered ">
+                        <tbody>
+                            <tr>
+                                <th class="col-sm">Patient ID:</th>
+                                <td>{{patient.id|number}}</td>
+                            </tr>
+                            <tr>
+                                <th>Patient Name:</th>
+                                <td>{{patient.name}}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Admission Date:</th>
+                                <td>{{patient.admissionDate}}</td>
+                            </tr>
+                            <tr>
+                                <th>Doctor ID:</th>
+                                <td>{{patient.doctor.id|number}}</td>
+                            </tr>
+                            <tr>
+                                <th>Doctor Name :</th>
+                                <td>{{patient.doctor.name}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <app-add-checkup *ngIf="addcheck" [patient]="patient">
+
+                    </app-add-checkup>
+                    <div *ngIf="checkup" class="p-4 d-flex justify-content-between">
+                        <div><img (click)="addcheckup()" style="margin-right: 50px;" src="\assets\add-icon.png"></div>
+                    </div>
+                    <p class="h3" align="center">CHECKUP</p>
+                    <table class=" table ">
+                        <thead class="thead">
+                            <tr class="row">
+                                <th class="col">Checkup Date</th>
+                                <th class="col">Checkup Details</th>
+                                <th class="col">Medicine Prescriber </th>
+                                <th class="col">Doctor Id </th>
+                                <th class="col">Doctor Name </th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="row" *ngFor="let c of checkups" align="center">
+                                <td class="col">{{c.checkUpDate}}</td>
+                                <td class="col"><a> {{c.details}}</a></td>
+                                <td class="col">{{c.medicine}}</td>
+                                <td class="col">{{c.doctorId|number}}</td>
+                                <td class="col">{{c.doctorName}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

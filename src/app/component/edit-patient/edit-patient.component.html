@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row pt-5">
+        <div class="mx-auto">
+            <div class="card rounded-10">
+                <div class="card-header">
+                    <h3 class="d-flex justify-content-center">Edit Doctor</h3>
+                </div>
+                <div class="card-body">
+                    <form class="form" #patientForm="ngForm" (ngSubmit)="edit(patientForm.value)">
+                        <div class="d-flex flex-column p-3">
+                            <label class=" h6">PAtient ID</label>
+                            <input class="form-control rounded-0 p2" type="text" name="id" [(ngModel)]="editPatient.id"
+                                disabled required />
+                            <label class=" h6">Patient Name</label>
+                            <input class="form-control rounded-0 p2" type="text" name="name"
+                                [(ngModel)]="editPatient.name" required />
+                            <label class="h6 pt-2">Admission Date</label>
+                            <input class="form-control rounded-0 p-2" type="date" name="admissionDate"
+                                [(ngModel)]="editPatient.admissionDate" required />
+
+                            <label class="h6 pt-2">Mobile No</label>
+                            <input class="form-control rounded-0 p-2" type="tel" name="phoneNo" [(ngModel)]="editPatient.phoneNo" required />
+                            <label class="h6 pt-2">Address</label>
+                            <textarea class="form-control rounded-0 p-2" name="address" [(ngModel)]="editPatient.address" required></textarea>
+                            <label class="h6 pt-2">Doctor</label>                            
+                            <select name="doctor"  (change)="changeDoctor($event)">
+                                <option *ngFor="let doc of doctorList" id="edoc" [selected]="editPatient.doctor.id==doc.id" value={{doc|json}}>{{doc|doc}}</option>
+                            </select>
+                            <div *ngIf="invalid" class="text-danger h6 text-center">Invalid Username Password</div>
+                            <div class="d-flex justify-content-center p-2">
+                                <button class="btn btn-primary w-50 " type="submit">Edit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

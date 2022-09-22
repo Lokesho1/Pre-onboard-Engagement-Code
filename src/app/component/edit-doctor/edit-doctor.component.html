@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row pt-5">
+        <div class="mx-auto">
+            <div class="card rounded-10">
+                <div class="card-header">
+                    <h3 class="d-flex justify-content-center" >Edit Doctor</h3>
+                </div>
+                <div class="card-body">
+                    <form  class="form" #doctorForm="ngForm" (ngSubmit)="edit(doctorForm.value)">
+                        <div class="d-flex flex-column p-3">
+                            <label class=" h6">Doctor ID</label>
+                            <input class="form-control rounded-0 p2" type="text" name="id" [(ngModel)]="editDoctor.id" disabled required />
+                            <label class=" h6">Doctor Name</label>
+                            <input class="form-control rounded-0 p2" type="text" name="name" [(ngModel)]="editDoctor.name" required />
+                            <label class="h6 pt-2">Specialization</label>
+                            <input class="form-control rounded-0 p-2"  value="" type="text"  [(ngModel)]="editDoctor.specialization" name="specialization" ngModel
+                                required />
+                                <label class=" h6">Phone No</label>
+                                <input class="form-control rounded-0 p2" type="text" name="phoneNo" [(ngModel)]="editDoctor.phoneNo" required />
+                                <label class=" h6">Address</label>
+                                <!-- <input class="form-control rounded-0 p2" type="text" name="name" ngModel required /> -->
+                                <textarea  name="address" [(ngModel)]="editDoctor.address" required ></textarea>
+                            <!-- <div *ngIf="invalid" class="text-danger h6 text-center">Invalid Username Password</div> -->
+                            <div class="d-flex justify-content-center p-2">
+                                <button class="btn btn-primary w-50 " >Edit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
